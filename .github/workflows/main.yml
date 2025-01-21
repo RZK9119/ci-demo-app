@@ -3,10 +3,10 @@ name: Python Test Workflow
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   test:
@@ -22,9 +22,8 @@ jobs:
 
       # Step 2: Set up Python environment
       - name: Install dependencies
-        run: |
-          pip install unittest # Install unittest jika diperlukan
-          pip install -r requirements.txt || true # Pastikan ini ada jika Anda menggunakan requirements.txt
+        run: pip install unittest # Install unittest jika diperlukan
+         
 
       # Step 3: Run tests
       - name: Run tests
