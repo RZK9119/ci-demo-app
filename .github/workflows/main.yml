@@ -1,9 +1,8 @@
-stages:  
-  - test  
-
-test_job:  
-  image: python:3.9  
-  stage: test  
-  script:  
-    - pip install -r requirements.txt  # jika ada dependensi lain  
-    - python -m unittest test_app.p
+stages:
+ - test
+test_job:
+ image: python:3.9
+ stage: test
+ script:
+ - pip install unittest
+ - python test_app.py
