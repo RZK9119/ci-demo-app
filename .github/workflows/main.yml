@@ -1,8 +1,31 @@
-stages:
- - test
-test_job:
- image: python:3.9
- stage: test
- script:
- - pip install unittest
- - python test_app.py
+name: Python Test Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    container:
+      image: python:3.9 # Gunakan image Python 3.9 seperti di contoh Anda
+
+    steps:
+      # Step 1: Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Python environment
+      - name: Install dependencies
+        run: |
+          pip install unittest # Install unittest jika diperlukan
+          pip install -r requirements.txt || true # Pastikan ini ada jika Anda menggunakan requirements.txt
+
+      # Step 3: Run tests
+      - name: Run tests
+        run: python test_app.py # Jalankan pengujian
